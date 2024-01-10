@@ -47,6 +47,12 @@ class InteractionHandler : Listener, KoinComponent {
         continueTrigger: EventTrigger? = null
     ) {
         val interaction = player.interaction ?: return
+        if(interaction.cooldown) return
+        interaction.cooldown = true
+        plugin.launch {
+            delay(500)
+            interaction.cooldown = false
+        }
         if (interaction.hasDialogue) {
             if (continueTrigger != null) {
                 triggerEvent(Event(player, continueTrigger))

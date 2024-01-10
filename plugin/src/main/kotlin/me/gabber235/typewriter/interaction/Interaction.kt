@@ -16,6 +16,7 @@ class Interaction(val player: Player) : KoinComponent {
 
     private var dialogue: DialogueSequence? = null
     private var cinematic: CinematicSequence? = null
+    var cooldown: Boolean = false
     val hasDialogue: Boolean
         get() = dialogue != null
 
